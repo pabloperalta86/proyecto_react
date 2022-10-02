@@ -1,16 +1,16 @@
 import CartWidget from './CartWidget'
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
         <div className="navbar bg-base-100 bg-accent">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-l">Supermercados React</a>
+                <Link to="/" className="btn btn-ghost normal-case text-l">Supermercados React</Link>
             </div>
             <div className="flex-2">
-                <a className="btn btn-ghost normal-case text-l">Ofertas</a>
-                <a className="btn btn-ghost normal-case text-l">Almacen</a>
-                <a className="btn btn-ghost normal-case text-l">Limpieza</a>
-                <a className="btn btn-ghost normal-case text-l">Verduleria</a>
+                <Link to='/category/almacen' className="btn btn-ghost normal-case text-l">Almacen</Link>
+                <Link to='/category/limpieza' className="btn btn-ghost normal-case text-l">Limpieza</Link>
+                <Link to='/category/verduleria' className="btn btn-ghost normal-case text-l">Verduleria</Link>
             </div>
             <div className="flex-none">
                 <CartWidget></CartWidget>
