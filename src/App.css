@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.ppp:hover{
+  animation: tiembla .4s;
+}
+
+@keyframes tiembla{
+  0%  { transform:rotateZ(-3deg); }
+  50% { transform:rotateZ( 0deg) scale(.9); }
+  100%{ transform:rotateZ( 3deg); }
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 90px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  color: white;
+}

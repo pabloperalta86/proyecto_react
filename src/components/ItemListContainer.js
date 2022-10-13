@@ -9,7 +9,7 @@ const ItemListContainer = ({greeting}) => {
     const [productos, setProducts] = useState([])
     const { categoryId } = useParams()
 
-    const styles = { border: 'green 2px solid', padding: '20px', margin: '20px' }
+    const styles = { border: 'gray 2px solid', padding: '20px', margin: '20px' }
 
     useEffect(() => {
         if (categoryId) {

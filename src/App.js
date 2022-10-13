@@ -3,19 +3,27 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Cart from './components/Cart';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header> 
+        <header className='sticky top-0 left-0'> 
           <NavBar/>
         </header>
-        <Routes>
-          <Route path='/' element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>}/>
-          <Route path={'/items/:id'} element={<ItemDetailContainer/>} />
-          <Route path={'/category/:categoryId'} element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>} />
-        </Routes>
+        <main className='main'>
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>}/>
+            <Route path={'/items/:itemId'} element={<ItemDetailContainer/>} />
+            <Route path={'/category/:categoryId'} element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>} />
+            <Route path={'/cart'} element={<Cart/>} />
+          </Routes>
+        </main>
+        <footer className='pie'>
+          <Footer/>
+        </footer>  
       </div>
     </BrowserRouter>
   );
