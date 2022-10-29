@@ -1,8 +1,7 @@
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
-import { products } from "../data/products";
-
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const ItemListContainer = ({greeting}) => {
 
@@ -11,20 +10,28 @@ const ItemListContainer = ({greeting}) => {
 
     const styles = { border: 'gray 2px solid', padding: '20px', margin: '20px' }
 
-    useEffect(() => {
-        if (categoryId) {
-            console.log(products)
-            setProducts( products.filter( p => p.title === categoryId))
-        } else {
-            console.log(products)
-            setProducts(products)
-        }  
-    }, [categoryId])    
+    const getProducts = () => {
+        const db = getFirestore()
+        const productsCollection = collection(db, 'items')
+        getDocs( productsCollection ).then( res => {
+            const productsData = res.docs.map( d => ({id: d.id, ...d.data()}) )
+            if (categoryId) {
+                setProducts(productsData.filter( p => p.title === categoryId))
+            } else {
+                setProducts(productsData)
+            }  
+        })
+    }
 
+    useEffect(() => {
+        getProducts();
+    }, [categoryId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+    let h2 = categoryId ? categoryId : 'Todos';
 
     return(
             <div style={styles}>
-                <h2>{greeting}</h2>
+                <h2 >{greeting} {h2}</h2>
                 <ItemList productos={productos}/>
             </div>
         );

@@ -1,25 +1,5 @@
-import { useEffect, useState } from "react";
-//import { collection, getDocs, getFirestore } from "firebase/firestore";
-
-
 const Footer = () => {
 
-// const [items, setItems] = useState([])
-
-// const getItems = () => {
-//     const db = getFirestore()
-//     const itemsRef = collection(db, 'items')
-//     getDocs( itemsRef ).then( snapshot => {
-//         const data = snapshot.docs.map( e => ({id: e.id, ...e.data()}) )
-//         console.table(data);
-//         setItems(data)
-//     })
-// }
-
-//     useEffect(() => {
-//         getItems()
-//     }, [])
-    
     const styles = {
         text: 'font-regular text-xs text-gray-600 tracking-wide leading-normal',
         icon: 'fill-current cursor-pointer'

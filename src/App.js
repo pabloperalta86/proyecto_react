@@ -15,9 +15,9 @@ function App() {
         </header>
         <main className='main'>
           <Routes>
-            <Route path='/' element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>}/>
+            <Route path='/' element={<ItemListContainer greeting="Productos:"></ItemListContainer>}/>
             <Route path={'/items/:itemId'} element={<ItemDetailContainer/>} />
-            <Route path={'/category/:categoryId'} element={<ItemListContainer greeting="PRODUCTOS"></ItemListContainer>} />
+            <Route path={'/category/:categoryId'} element={<ItemListContainer greeting="Productos:"></ItemListContainer>} />
             <Route path={'/cart'} element={<Cart/>} />
           </Routes>
         </main>

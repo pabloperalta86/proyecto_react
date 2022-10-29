@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { products } from '../data/products'
 import ItemCount from './ItemCount'
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const Loading = () => {
     return (
@@ -45,19 +45,19 @@ const ItemDetailContainer = () => {
     const [loading, setloading] = useState(true)
     const [item, setItem] = useState({})
 
-    const getItemDetails = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-            resolve( products.find( p => p.id === Number(itemId) ) )
-        }, 300);
-    })}
-
+    const getProduct = () => {
+        const db = getFirestore();
+        const productsCollection = collection(db, 'items');
+        getDocs( productsCollection ).then( res => {
+            const productsData = res.docs.map( d => ({...d.data()}) );
+            setItem(productsData.filter( p => p.id === Number(itemId))[0]);
+        });
+    }
+    
     useEffect(() => {
-        getItemDetails().then( response => {
-            setItem( response )
-            setloading(false)
-        })
-    })
+        getProduct();
+        setloading(false);
+    },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
