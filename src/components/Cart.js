@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { Button } from "react-daisyui"
 import { Link } from "react-router-dom"
 import { CartContext } from "../context/CartContext"
 //import { formatPrice } from "../helpers/formatPrice"
@@ -73,7 +72,7 @@ const Cart = () => {
                                         <th className={styles.text}>{item.quantity}</th>
                                         <th className={styles.text}>{getSubtotal(item.price, item.quantity)}</th>
                                         <th className="px-4 lg:pl-2 xl:pl-24">
-                                            <Button onClick={() => removeItem(item.id)} className="w-6 h-6 border-transparent focus:border-transparent focus:ring-0 text-gray-400 hover:text-gray-600 cursor-pointer bg-accent">X</Button>
+                                            <button onClick={() => removeItem(item.id)} className="w-6 h-6 border-transparent focus:border-transparent focus:ring-0 text-gray-400 hover:text-gray-600 cursor-pointer bg-accent">X</button>
                                         </th>
                                     </tr>
                                 ))}
