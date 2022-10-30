@@ -17,12 +17,6 @@ const ItemCount = ({stock, addToCart}) => {
         cantidad-1 > 0 ? setDisable(false) : setDisable(true);
     }
 
-    //const carrito = [] 
-const agregarCarrito = (event) => {
-    console.log(event.target)
-    //carrito.push(event.id)
-}
-
     const styles = { border: 'none', width: '75px', margin: 'auto' }
     console.log(disable)
     return(

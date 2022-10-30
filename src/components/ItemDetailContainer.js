@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { CartContext } from "../context/CartContext";
 
 const Loading = () => {
     return (
@@ -10,6 +11,12 @@ const Loading = () => {
 }
 
 const Item = ( {item} ) => {
+    const { addItem } = useContext(CartContext);
+
+    const addToCart = (quantity) => {
+        addItem(item, quantity)
+    }
+
     return (
         <div className="container grid grid-cols-7 grid-rows-1 m-10">
             <div className="col-span-1"></div>
@@ -32,7 +39,7 @@ const Item = ( {item} ) => {
                     <h3 className='text-2xl'>Precio: { item.price }</h3>
                 </div>  
                 <div className="justify-items-center col-span-5 my-2 row-span-1">
-                    <ItemCount stock={item.stock}/>
+                    <ItemCount addToCart={addToCart} stock={item.stock}/>
                 </div>
             </div>
             <div className="col-span-1"></div>
