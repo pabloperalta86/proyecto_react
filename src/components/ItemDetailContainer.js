@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 import ItemCount from './ItemCount'
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { CartContext } from "../context/CartContext";

@@ -13,7 +13,7 @@ const CheckOut = () => {
         return docSnap.id
     }    
     // Estilos del checkout
-    const styles = {
+   /* const styles = {
         title: "font-medium text-lg text-gray-800 tracking-wider leading-tight uppercase",
         text: "font-light text-sm text-gray-600 tracking-wide leading-normal",
         highlight: "font-medium text-xs text-gray-700 tracking-wider leading-loose uppercase",
@@ -21,7 +21,7 @@ const CheckOut = () => {
         symbol: "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer text-gray-400 border border-gray-400 w-7 h-7 flex items-center justify-center p-0.5",
         counter: "border border-x-1 border-x-white border-y-gray-400 text-gray-600 h-full text-center w-5 p-0.5"
     }
-
+*/
     // Context del carrito
     const { cartItems, cartLength, clearCart, getTotal } = useContext(CartContext)
 
@@ -69,29 +69,29 @@ const CheckOut = () => {
                 <div className="flex w-full flex-col justify-center items-center">
 
                     {/* Título */}
-                    <h1 className={(styles.title) + " self-start mb-6"}>Checkout</h1>
+                    <h1 className=" self-start mb-6">Checkout</h1>
                     
                     {/* Información de la compra */}
                     <div className="flex w-full flex-col lg:flex-row justify-start items-start">
                         
                         {/* Resúmen */}
                         <div className="flex flex-col self-start w-full md:w-1/2 mr-6">
-                            <h2 className={styles.highlight}>Resúmen</h2>
+                            <h2>Resúmen</h2>
                             <div className="flex flex-col border border-gray-200 p-4 mt-6">
-                                <div className={"flex flex-row justify-between " + (styles.text)}>
+                                <div className="flex flex-row justify-between ">
                                     <p>Cantidad de items:</p>
                                     <p>{cartLength()}</p>
                                 </div>
-                                <div className={"flex flex-row justify-between " + (styles.text)}>
+                                <div className="flex flex-row justify-between ">
                                     <p>Gastos de envío:</p>
                                     <p>¡Envío gratis!</p>
                                 </div>
-                                <div className={"flex flex-row justify-between font-semibold mt-10 " + (styles.highlight)}>
+                                <div className="flex flex-row justify-between font-semibold mt-10 ">
                                     <p>Total:</p>
                                     <p>{getTotal()}</p>
                                 </div>
                             </div>
-                            <Link to='/cart' className={(styles.text) + " flex flex-row items-center mt-3 lowercase"}>
+                            <Link to='/cart' className=" flex flex-row items-center mt-3 lowercase">
                                 Volver al carrito
                             </Link>
                         </div>
@@ -101,9 +101,9 @@ const CheckOut = () => {
 
                             {/* Formulario */}
                             <form className="space-y-6">
-                                <h2 className={styles.highlight}>Detalles de facturación</h2>
+                                <h2>Detalles de facturación</h2>
                                 <input
-                                    className={"px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full " + (styles.text)}
+                                    className="px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full "
                                     id="name"
                                     type="text"
                                     name="name"
@@ -112,7 +112,7 @@ const CheckOut = () => {
                                     placeholder="Nombre"
                                 />
                                 <input
-                                    className={"px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full " + (styles.text)}
+                                    className="px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full "
                                     id="surname"
                                     type="text"
                                     name="surname"
@@ -121,7 +121,7 @@ const CheckOut = () => {
                                     placeholder="Apellido"
                                 />
                                 <input
-                                    className={"px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full " + (styles.text)}
+                                    className="px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full "
                                     id="telephone"
                                     type="tel"
                                     name="telephone"
@@ -130,7 +130,7 @@ const CheckOut = () => {
                                     placeholder="Teléfono (insertar como mínimo 7 dígitos)"
                                 />
                                 <input
-                                    className={"px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full " + (styles.text)}
+                                    className="px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full "
                                     id="email"
                                     type="email"
                                     name="email"
@@ -139,7 +139,7 @@ const CheckOut = () => {
                                     placeholder="E-mail"
                                 />
                                 <input
-                                    className={"px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full " + (styles.text)}
+                                    className="px-2 focus:outline-none focus:ring-white focus:border-gray-600 border-b border-gray-200 placeholder-gray-600 py-4 w-full "
                                     id="emailConfirm"
                                     type="email"
                                     name="emailConfirm"
@@ -155,14 +155,14 @@ const CheckOut = () => {
                                     // Botón habilitado
                                     <input 
                                         onClick={() => { orderHandler(); setShowModal(true) }} 
-                                        className={(styles.button) + " focus:outline-none text-white bg-gray-700 focus:ring-transparent w-full text-center py-3 cursor-pointer mt-6"}
+                                        className=" focus:outline-none text-white bg-accent focus:ring-transparent w-full text-center py-3 cursor-pointer mt-6"
                                         type="submit" 
                                         value="Proceder al pago" 
                                     />
                                 ) : (
                                     // Botón deshabilitado
                                     <input 
-                                    className={(styles.button) + " focus:outline-none text-white bg-gray-400 focus:ring-transparent w-full text-center py-3 mt-6"}
+                                    className=" focus:outline-none text-white bg-gray-400 focus:ring-transparent w-full text-center py-3 mt-6"
                                         type="submit" 
                                         value="Proceder al pago" 
                                         disabled 
@@ -175,13 +175,13 @@ const CheckOut = () => {
             </div>
 
             {/* Contenedor modal final */}
-            <div className={`${showModal ? "flex" : "hidden"} inset-0 fixed w-full h-full bg-gray-800`}>
+            <div className={`${showModal ? "flex" : "hidden"} inset-0 fixed w-full h-full bg-accent`}>
                 <div className="container mx-auto justify-center items-center px-4 md:px-10 py-20 place-self-center">
                     <div className="bg-white px-3 md:px-4 py-12 flex flex-col justify-center items-center">
-                        <h2 className={"text-center md:w-9/12 lg:w-7/12" + (styles.title)}>¡Muchas gracias por tu compra {(buyer.name).toUpperCase()}!</h2>
-                        <p className={"mt-6 text-center md:w-9/12 lg:w-7/12 " + (styles.text)}>Te enviamos un mail a {(buyer.email).toLowerCase()} con tu orden de compra ID: {idCompra}. Esperamos que hayas tenido una agradable experiencia en YOHJI YAMAMOTO. ¡Hasta la próxima!</p>
+                        <h2 className="text-center md:w-9/12 lg:w-7/12">¡Muchas gracias por tu compra {(buyer.name).toUpperCase()}!</h2>
+                        <p className="mt-6 text-center md:w-9/12 lg:w-7/12">Te enviamos un mail a {(buyer.email).toLowerCase()} con tu orden de compra ID: {idCompra}. Muchas gracias por su compra. Lo esperamos pronto Supermecados React.</p>
                         <Link to="/" className="mt-6 flex justify-center">
-                            <button onClick={clearCart} className={(styles.button) + " focus:outline-none text-white bg-gray-700 focus:ring-transparent w-40 text-center py-3 cursor-pointer"}>
+                            <button onClick={clearCart} className=" focus:outline-none text-white bg-accent focus:ring-transparent w-40 text-center py-3 cursor-pointer">
                                 Volver al inicio
                             </button>
                         </Link>
