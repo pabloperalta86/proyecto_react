@@ -18,11 +18,11 @@ El proyecto es un e-commerce para un supermercado.
 
 ## PrintScreen
 
-![Todos los productos](https://github.com/pabloperalta86/proyecto_react/blob/main/imgReadme/Screenshot_1.png)
+![Todos los productos](https://raw.githubusercontent.com/pabloperalta86/proyecto_react/master/imgReadme/Screenshot_1.png)
 
-![Detalle de producto](https://github.com/pabloperalta86/proyecto_react/blob/main/imgReadme/Screenshot_2.png)
+![Detalle de producto](https://raw.githubusercontent.com/pabloperalta86/proyecto_react/master/imgReadme/Screenshot_2.png)
 
-![Carrito](https://github.com/pabloperalta86/proyecto_react/blob/main/imgReadme/Screenshot_3.png)
+![Carrito](https://raw.githubusercontent.com/pabloperalta86/proyecto_react/master/imgReadme/Screenshot_3.png)
 
 ## Herramientas
 

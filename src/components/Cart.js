@@ -1,21 +1,15 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../context/CartContext"
-//import { formatPrice } from "../helpers/formatPrice"
 
-// Carrito de compras
 const Cart = () => {
 
-    // Contexto del carrito
     const {cartItems, removeItem, clearCart, cartLength, getSubtotal, getTotal} = useContext(CartContext)
 
-    // Render del carrito
     return (
         <>
-            {/* Si el carrito esta vacío, se muestra un mensaje de advertencia, si no, se muestra su contenido */}
             {cartLength() === 0 ? (
 
-                // Mensaje de advertencia
                 <div className="flex min-h-screen -mb-48 flex flex-col">
                     <div className="m-auto mt-64">
                         <p >Tu carrito está vacío. Agregá algún producto para poder continuar.</p>
@@ -27,17 +21,13 @@ const Cart = () => {
 
             ) : (
 
-                // Contenido del carrito
                 <div className="mx-6">
                     <div className="flex flex-col justify-between w-full lg:max-w-7xl xl:m-auto">
 
-                        {/* Título */}
                         <h1 className=" self-center mb-6">Carrito</h1>
 
-                        {/* Tabla de contenido */}
                         <table className="inline-block overflow-x-auto whitespace-nowrap">
                             
-                            {/* Nombre de columnas */}
                             <thead className="h-10 text-center">
                                 <tr className="border-gray-200 border-b">
                                     <th className=" text-left pl-4">Producto</th>
@@ -48,7 +38,6 @@ const Cart = () => {
                                 </tr>
                             </thead>
 
-                            {/* Items en el carrito */}
                             <tbody className="w-full text-center">
                                 {cartItems.map((item) => (
                                     <tr key={item.id} className="border-gray-200 border-b">
@@ -69,15 +58,10 @@ const Cart = () => {
                             </tbody>
                         </table>
 
-                        {/* Detalles del carrito */}
                         <div className="flex flex-col md:flex-row justify-between mt-6 mb-5 mx-4">
-
-                            {/* Vaciar carrito */}
                             <button onClick={clearCart} className=' flex flex-row items-center self-start mb-4'>
                                 Vaciar Carrito
                             </button>
-
-                            {/* Resúmen de compra */}
                             <div className="flex flex-col self-end w-full md:w-2/5">
                                 <div className="flex flex-row justify-between ">
                                     <p>Cantidad de items:</p>

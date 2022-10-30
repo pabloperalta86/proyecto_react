@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import { CartContext } from "../context/CartContext"
 import { collection, getFirestore, addDoc } from "firebase/firestore"
 
-
-// Checkout
 const CheckOut = () => {
 
     const addOrder = async (order) => {
@@ -12,20 +10,8 @@ const CheckOut = () => {
         const docSnap = await addDoc(collection(db, "orders"), order)
         return docSnap.id
     }    
-    // Estilos del checkout
-   /* const styles = {
-        title: "font-medium text-lg text-gray-800 tracking-wider leading-tight uppercase",
-        text: "font-light text-sm text-gray-600 tracking-wide leading-normal",
-        highlight: "font-medium text-xs text-gray-700 tracking-wider leading-loose uppercase",
-        button: "font-medium text-xxs text-gray-700 tracking-wider leading-normal uppercase select-none",
-        symbol: "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer text-gray-400 border border-gray-400 w-7 h-7 flex items-center justify-center p-0.5",
-        counter: "border border-x-1 border-x-white border-y-gray-400 text-gray-600 h-full text-center w-5 p-0.5"
-    }
-*/
-    // Context del carrito
     const { cartItems, cartLength, clearCart, getTotal } = useContext(CartContext)
 
-    // Use states que permiten obtener el id de la compra, mostrar un modal final y obtener los datos del cliente
     const [idCompra, setIdCompra] = useState("")
     const [showModal, setShowModal] = useState(false)
     const [buyer, setBuyer] = useState({
@@ -36,19 +22,15 @@ const CheckOut = () => {
         emailConfirm: "",
     })
 
-    // Expresiones regulares para los campos e-mail y teléfono
     const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
     const telephoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{1,6}$/im
 
-    // Obtener información acerca de la fecha en que se realizó la compra
     const orderDate = new Date().toLocaleDateString()
 
-    // Obtener los datos del cliente
     const handleSubmitChange = (e) => {
         setBuyer({ ...buyer, [e.target.name]: e.target.value })
     }
 
-    // Generación de la orden, con información del cliente, los items, el precio y la fecha en que se realizó la compra
     function orderHandler() {
         const order = {
             buyer,
@@ -61,20 +43,12 @@ const CheckOut = () => {
         })
     }
 
-    // Render del checkout
     return (
         <>
-            {/* Contenedor checkout */}
             <div className="flex justify-center items-center mx-auto xl:max-w-7xl mx-6 xl:mx-auto">
                 <div className="flex w-full flex-col justify-center items-center">
-
-                    {/* Título */}
                     <h1 className=" self-start mb-6">Checkout</h1>
-                    
-                    {/* Información de la compra */}
                     <div className="flex w-full flex-col lg:flex-row justify-start items-start">
-                        
-                        {/* Resúmen */}
                         <div className="flex flex-col self-start w-full md:w-1/2 mr-6">
                             <h2>Resúmen</h2>
                             <div className="flex flex-col border border-gray-200 p-4 mt-6">
@@ -95,11 +69,7 @@ const CheckOut = () => {
                                 Volver al carrito
                             </Link>
                         </div>
-
-                        {/* Detalle de facturación */}
                         <div className="flex flex-col justify-start items-start w-full mt-6 lg:mt-0 mb-3">
-
-                            {/* Formulario */}
                             <form className="space-y-6">
                                 <h2>Detalles de facturación</h2>
                                 <input
@@ -149,10 +119,8 @@ const CheckOut = () => {
                                 />
                             </form>
 
-                            {/* Si se completan todos los inputs correctamente, se habilita el botón para proceder con el pago */}
                             {buyer.name && buyer.surname && buyer.telephone && (buyer.email === buyer.emailConfirm) && telephoneRegex.test(buyer.telephone) && emailRegex.test(buyer.email, buyer.emailConfirm)
                                 ? (
-                                    // Botón habilitado
                                     <input 
                                         onClick={() => { orderHandler(); setShowModal(true) }} 
                                         className=" focus:outline-none text-white bg-accent focus:ring-transparent w-full text-center py-3 cursor-pointer mt-6"
@@ -160,7 +128,6 @@ const CheckOut = () => {
                                         value="Proceder al pago" 
                                     />
                                 ) : (
-                                    // Botón deshabilitado
                                     <input 
                                     className=" focus:outline-none text-white bg-gray-400 focus:ring-transparent w-full text-center py-3 mt-6"
                                         type="submit" 
@@ -174,7 +141,6 @@ const CheckOut = () => {
                 </div>
             </div>
 
-            {/* Contenedor modal final */}
             <div className={`${showModal ? "flex" : "hidden"} inset-0 fixed w-full h-full bg-accent`}>
                 <div className="container mx-auto justify-center items-center px-4 md:px-10 py-20 place-self-center">
                     <div className="bg-white px-3 md:px-4 py-12 flex flex-col justify-center items-center">
@@ -188,7 +154,6 @@ const CheckOut = () => {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
